@@ -4,12 +4,12 @@
     <title>Fsh html</title>
   </head>
   <body>
-    <textarea onchange="up()"></textarea>
+    <textarea onkeyup="up(this)"></textarea>
     <iframe id="view"></iframe>
     <script>
-      function up() {
+      function up(t) {
         document.getElementById('view').innerHTML = "";
-        document.getElementById('view').conyentDocument.write(this.value)
+        document.getElementById('view').contentDocument.write(t.value)
       }
     </script>
   </body>
