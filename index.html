@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Fsh html</title>
+  </head>
+  <body>
+    <textarea onchange="up()"></textarea>
+    <iframe id="view"></iframe>
+    <script>
+      function up() {
+        document.getElementById('view').innerHTML = "";
+        document.getElementById('view').conyentDocument.write(this.value)
+      }
+    </script>
+  </body>
+</html>
