@@ -8,7 +8,7 @@
     <iframe id="view"></iframe>
     <script>
       function up(t) {
-        document.getElementById('view').innerHTML = "";
+        document.getElementById('view').contentDocument.body.innerHTML = "";
         document.getElementById('view').contentDocument.write(t.value)
       }
     </script>
