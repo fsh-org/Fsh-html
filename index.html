@@ -1,16 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="sl-theme-dark">
   <head>
-    <title>Fsh html</title>
+    <title>Fsh HTML</title>
+    <!-- Boiler plate------ -->
+    <link rel="icon" href="https://fsh.plus/fsh.png" type="image/png">
+    <meta name="description" content="Fsh live html editor">
+    <!-- ------- -->
+    <!--<link rel="stylesheet" href="https://fsh.plus/NewStyle.css">-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://fsh.plus/fsh.png"/>
+    <meta name="theme-color" content="#a89c9b">
+    <!-- ------------------ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.1/cdn/themes/dark.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.1/cdn/shoelace.js" ></script>
+    <style>
+      * {
+        font-family: Arial;
+      }
+      body {
+        margin:0;
+        padding:0;
+        overflow: hidden;
+      }
+      textarea, iframe {
+        position: absolute;
+        resize: none;
+        left:0;
+        right:0;
+        min-width:0;
+        min-height:0;
+        top:0;
+        bottom:0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      sl-split-panel::part(divider) {
+        background-color: #888;
+      }
+    </style>
   </head>
   <body>
-    <textarea onkeyup="up(this)"></textarea>
-    <iframe id="view"></iframe>
+    <sl-split-panel vertical position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
+      <sl-icon slot="divider" name="grip-horizontal"></sl-icon>
+      <div style="position:relative" slot="start" style="overflow-y:auto">
+        <textarea spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
+      </div>
+      <div style="position:relative" slot="end" style="overflow-y:auto">
+        <iframe></iframe>
+      </div>
+    </sl-split-panel>
     <script>
-      function up(t) {
-        document.getElementById('view').contentDocument.body.innerHTML = "";
-        document.getElementById('view').contentDocument.write(t.value)
+      function up() {
+        //document.getElementsByTagName('iframe')[0].contentDocument.documentElement.innerHTML = "";
+        document.getElementsByTagName('iframe')[0].contentDocument.documentElement.innerHTML = document.getElementsByTagName('textarea')[0].value;
       }
+      document.getElementsByTagName('textarea')[0].onkeydown = up
+      document.getElementsByTagName('textarea')[0].onkeyup = up
     </script>
   </body>
 </html>
