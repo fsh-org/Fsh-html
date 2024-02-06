@@ -7,4 +7,6 @@ function up() {
 textarea.onkeydown = up
 textarea.onkeyup = up
 
-keystrokes.bindKey('ctrl + shift + f', () => document.getElementById('search').showModal())
+import { bindKey } from '@rwh/keystrokes'
+
+bindKey('ctrl + shift + f', () => document.getElementById('search').showModal())
