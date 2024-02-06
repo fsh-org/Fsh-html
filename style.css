@@ -1,5 +1,6 @@
 * {
   font-family: Arial;
+  min-width: 0;
 }
 body {
   margin:0;
@@ -11,11 +12,11 @@ div[slot="start"] {
   flex-direction: column;
 }
 textarea {
+  resize: none;
   flex: 1;
 }
 iframe {
   position: absolute;
-  resize: none;
   left:0;
   right:0;
   min-width:0;
