@@ -28,21 +28,9 @@
     <sl-split-panel position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
       <sl-icon slot="divider" name="grip-vertical"></sl-icon>
       <div style="position:relative" slot="start" style="overflow-y:auto">
-        <sl-split-panel vertical position="34" style="height:100vh">
-          <div style="position:relative" slot="start" style="overflow-y:auto">
-            <textarea id="html" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
-          </div>
-          <div style="position:relative" slot="end" style="overflow-y:auto">
-            <sl-split-panel vertical position="50" style="height:100vh">
-              <div style="position:relative" slot="start" style="overflow-y:auto">
-                <textarea id="css" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
-              </div>
-              <div style="position:relative" slot="end" style="overflow-y:auto">
-                <textarea id="js" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
-              </div>
-            </sl-split-panel>
-          </div>
-        </sl-split-panel>
+        <textarea id="html" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
+        <textarea id="css" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
+        <textarea id="js" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
       </div>
       <div style="position:relative" slot="end" style="overflow-y:auto">
         <iframe style="background-color: #fff"></iframe>
