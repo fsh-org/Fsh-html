@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="sl-theme-dark">
   <head>
-    <script src="https://unpkg.com/browse/@rwh/keystrokes@latest/dist/keystrokes.js"></script>
     <title>Fsh HTML</title>
     <!-- Boiler plate------ -->
     <link rel="icon" href="https://fsh.plus/fsh.png" type="image/png">
@@ -26,9 +25,20 @@
       <label>Replace with:</label>
       <input id="with">
     </dialog>
-    <sl-split-panel vertical position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
+    <sl-split-panel position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
       <sl-icon slot="divider" name="grip-horizontal"></sl-icon>
       <div style="position:relative" slot="start" style="overflow-y:auto">
+        <!--
+        <sl-split-panel vertical position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
+      <sl-icon slot="divider" name="grip-horizontal"></sl-icon>
+      <div style="position:relative" slot="start" style="overflow-y:auto">
+        <textarea spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
+      </div>
+      <div style="position:relative" slot="end" style="overflow-y:auto">
+        <iframe style="background-color: #fff"></iframe>
+      </div>
+    </sl-split-panel>
+        -->
         <textarea spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
       </div>
       <div style="position:relative" slot="end" style="overflow-y:auto">
