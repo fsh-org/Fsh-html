@@ -8,5 +8,4 @@ textarea.onkeydown = up
 textarea.onkeyup = up
 
 import { bindKey } from '@rwh/keystrokes'
-
 bindKey('ctrl + shift + f', () => document.getElementById('search').showModal())
