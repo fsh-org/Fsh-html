@@ -6,7 +6,13 @@ body {
   padding:0;
   overflow: hidden;
 }
-textarea, iframe {
+div[slot="start"] {
+  display: flex;
+}
+textarea {
+  flex: 1;
+}
+iframe {
   position: absolute;
   resize: none;
   left:0;
