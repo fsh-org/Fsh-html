@@ -15,9 +15,17 @@
     <meta name="theme-color" content="#a89c9b">
     <!-- ------------------ -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.1/cdn/themes/dark.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.1/cdn/shoelace.js" ></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.1/cdn/shoelace.js" ></script>ç
+    <script src="https://unpkg.com/browse/@rwh/keystrokes@latest/dist/keystrokes.js">
   </head>
   <body>
+    <dialog id="search">
+      <h1>Search & Replace</h1>
+      <label>Find:</label>
+      <input id="find">
+      <label>Replace with:</label>
+      <input id="with">
+    </dialog>
     <sl-split-panel vertical position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
       <sl-icon slot="divider" name="grip-horizontal"></sl-icon>
       <div style="position:relative" slot="start" style="overflow-y:auto">
