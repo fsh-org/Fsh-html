@@ -6,6 +6,7 @@ body {
   margin:0;
   padding:0;
   overflow: hidden;
+  height: 100%:
 }
 div[slot="start"] {
   display: flex;
@@ -29,4 +30,7 @@ iframe {
 }
 sl-split-panel::part(divider) {
   background-color: #888;
+}
+p {
+  margin: 0;
 }
