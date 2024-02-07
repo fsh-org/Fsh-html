@@ -46,22 +46,25 @@
             monaco.editor.create(document.getElementById('html'), {
               language: "html",
               scrollBeyondLastLine: true,
-	            readOnly: false,
-	            automaticLayout: true,
+              readOnly: false,
+              automaticLayout: true,
+              minimap: {enabled: false},
               theme: "vs-dark"
             });
             monaco.editor.create(document.getElementById('css'), {
               language: "css",
               scrollBeyondLastLine: true,
-	            readOnly: false,
-	            automaticLayout: true,
+              readOnly: false,
+              automaticLayout: true,
+              minimap: {enabled: false},
               theme: "vs-dark"
             });
             monaco.editor.create(document.getElementById('js'), {
               language: "javascript",
               scrollBeyondLastLine: true,
-	            readOnly: false,
-	            automaticLayout: true,
+              readOnly: false,
+              automaticLayout: true,
+              minimap: {enabled: false},
               theme: "vs-dark"
             });
           });
