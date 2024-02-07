@@ -33,6 +33,9 @@ iframe {
 sl-split-panel::part(divider) {
   background-color: #888;
 }
-p {
+h1, p {
   margin: 0;
+}
+dialog {
+  border-radius: 1rem;
 }
