@@ -21,8 +21,7 @@ js.onkeyup = up
 document.onkeydown = search;
 function search(evt) {
   if (!evt) evt = event;
-  //console.log(evt)
   if (evt.ctrlKey && evt.key==='F') {
-    alert("ss"); 
+    document.getElementById('search').showDialog();
   }
 }
