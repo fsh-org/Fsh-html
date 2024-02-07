@@ -35,22 +35,28 @@
       <sl-icon slot="divider" name="grip-vertical"></sl-icon>
       <div style="position:relative" slot="start" style="overflow-y:auto">
         <p>HTML</p>
-        <textarea aria-label="HTML" id="html" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
+        <div id="html"></div>
         <p>CSS</p>
-        <textarea aria-label="CSS" id="css" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
+        <div id="css"></div>
         <p>JS</p>
-        <textarea aria-label="JS" id="js" spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
-        <div id="container" style="height: 200px"></div>
-
-  <script>
-   require.config({ paths: { vs: 'https://unpkg.com/monaco-editor/min/vs' } });
-   require(['vs/editor/editor.main'], function () {
-    var editor = monaco.editor.create(document.getElementById('container'), {
-     value: 'Hello world',
-     language: 'javascript'
-    });
-   });
-  </script>
+        <div id="js"></div>
+        <script>
+          require.config({ paths: { vs: 'https://unpkg.com/monaco-editor/min/vs' } });
+          require(['vs/editor/editor.main'], function () {
+            monaco.editor.create(document.getElementById('html'), {
+              language: "html",
+              theme: "vs-dark"
+            });
+            monaco.editor.create(document.getElementById('css'), {
+              language: "css",
+              theme: "vs-dark"
+            });
+            monaco.editor.create(document.getElementById('js'), {
+              language: "javascript",
+              theme: "vs-dark"
+            });
+          });
+      </script>
       </div>
       <div style="position:relative" slot="end" style="overflow-y:auto">
         <iframe id="render" title="Rendered content" style="background-color: #fff"></iframe>
