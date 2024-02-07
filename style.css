@@ -12,6 +12,9 @@ div[slot="start"] {
   display: flex;
   flex-direction: column;
 }
+div[slot="start"] div[id] {
+  height: 100%;
+}
 iframe {
   position: absolute;
   left:0;
