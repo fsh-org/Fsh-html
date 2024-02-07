@@ -19,6 +19,7 @@
   </head>
   <body>
     <dialog id="search">
+      <button class="close" onclick="this.parentElement.close()">x</button>
       <h1>Search & Replace</h1>
       <br>
       <label>Find:</label>
@@ -27,7 +28,7 @@
       <label>Replace with:</label>
       <input id="with">
       <br>
-      <button onclick="codeReplace()">Replace</button>
+      <button id="replace()">Replace all</button>
     </dialog>
     <sl-split-panel position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
       <sl-icon slot="divider" name="grip-vertical"></sl-icon>
