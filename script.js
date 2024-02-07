@@ -28,6 +28,6 @@ function search(evt) {
 function codeReplace() {
   let places = [html,css,js];
   places.forEach(pl => {
-    pl.value = pl.value.replaceAll(document.getElementById('find'), document.getElementById('with'))
+    pl.value = pl.value.replaceAll(document.getElementById('find').value, document.getElementById('with').value)
   })
 }
