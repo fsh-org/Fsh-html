@@ -22,6 +22,6 @@ document.onkeydown = search;
 function search(evt) {
   if (!evt) evt = event;
   if (evt.ctrlKey && evt.key==='F') {
-    document.getElementById('search').showDialog();
+    document.getElementById('search').showModal();
   }
 }
