@@ -12,11 +12,11 @@ div[slot="start"] {
   display: flex;
   flex-direction: column;
 }
-textarea {
-  resize: none;
+div[slot="start"] div {
   flex: 1;
   min-width:0;
   min-height:0;
+  height: 100%;
 }
 iframe {
   position: absolute;
