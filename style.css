@@ -39,3 +39,14 @@ h1, p {
 dialog {
   border-radius: 1rem;
 }
+button {
+  cursor: pointer;
+}
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: transparent;
+  border: none;
+  margin: 2px;
+}
