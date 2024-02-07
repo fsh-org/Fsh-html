@@ -25,3 +25,9 @@ function search(evt) {
     document.getElementById('search').showModal();
   }
 }
+function replace() {
+  let places = [html,css,js];
+  places.forEach(pl => {
+    pl.value = pl.value.replaceAll(document.getElementById('find'), document.getElementById('with'))
+  })
+}
