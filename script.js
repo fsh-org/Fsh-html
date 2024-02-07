@@ -1,7 +1,7 @@
 let html = document.getElementById('html');
 let css = document.getElementById('css');
 let js = document.getElementById('js');
-let iframe = document.getElementsByTagName('iframe')[0];
+let iframe = document.getElementById('render');
 
 function up() {
   iframe.contentDocument.documentElement.innerHTML = '';
@@ -17,3 +17,11 @@ css.onkeydown = up
 css.onkeyup = up
 js.onkeydown = up
 js.onkeyup = up
+
+document.onkeydown = search;
+function search(evt) {
+  if (!evt) evt = event;
+  if (evt.ctrlKey && evt.shiftKey && evt.key=='f') {
+    alert("ss"); 
+  }
+}
