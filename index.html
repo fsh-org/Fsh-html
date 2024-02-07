@@ -7,7 +7,7 @@
     <meta name="description" content="Fsh live html editor">
     <!-- ------- -->
     <link rel="stylesheet" href="/style.css">
-    <script type="module" src="/script.js"></script>
+    <script src="/script.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
       <label>Replace with:</label>
       <input id="with">
       <br>
-      <button id="replace">Replace all</button>
+      <button onclick="codeReplace()">Replace all</button>
     </dialog>
     <sl-split-panel position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
       <sl-icon slot="divider" name="grip-vertical"></sl-icon>
