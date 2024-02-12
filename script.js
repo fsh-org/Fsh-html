@@ -14,6 +14,4 @@ function up() {
   iframe.contentDocument.write(data[0].getValue())
 }
 
-document.getElementById('html').onkeyup = up;
-document.getElementById('css').onkeyup = up;
-document.getElementById('js').onkeyup = up;
+document.body.onkeyup = up;
