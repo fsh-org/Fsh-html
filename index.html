@@ -19,21 +19,14 @@
     <script src="https://unpkg.com/monaco-editor/min/vs/loader.js"></script>
   </head>
   <body>
-    <dialog id="search">
+    <dialog id="settings">
       <button class="close" onclick="this.parentElement.close()">x</button>
-      <h1>Search & Replace</h1>
-      <br>
-      <label>Find:</label>
-      <input id="find">
-      <br>
-      <label>Replace with:</label>
-      <input id="with">
-      <br>
-      <button onclick="codeReplace()">Replace all</button>
-    </dialog>
+      <h1>Settings</h1>
+   </dialog>
     <sl-split-panel position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
       <sl-icon slot="divider" name="grip-vertical"></sl-icon>
       <div style="position:relative" slot="start" style="overflow-y:auto">
+        <button style="position:abdolute;top:0;right:0;">settings</button>
         <p>HTML</p>
         <div id="html"></div>
         <p>CSS</p>
