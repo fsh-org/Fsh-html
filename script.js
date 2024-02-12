@@ -7,7 +7,7 @@ function up() {
   let data = window.monaco.editor.getEditors();
   
   let val = [data[0].getValue(), data[1].getValue(), data[2].getValue()]
-  if (sval.allEqual(val)) return;
+  if (sval.join('|SEPARATOR|FSH|') == val.join('|SEPARATOR|FSH|')) return;
   sval = val
   iframe.contentDocument.write('<style>'+data[1].getValue()+'</style>')
   iframe.contentDocument.write('<script>'+data[2].getValue()+'</script>')
