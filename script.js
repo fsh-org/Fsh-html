@@ -14,4 +14,6 @@ function up() {
   iframe.contentDocument.write(data[0].getValue())
 }
 
-document.body.onkeyup = up;
+window.addEventListener("load", function(){
+  document.body.onkeyup = up;
+})
