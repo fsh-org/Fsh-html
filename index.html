@@ -23,7 +23,7 @@
       <button class="close" onclick="this.parentElement.close()">x</button>
       <h1>Settings</h1>
       <label>Tab size:</label>
-      <select value="4">
+      <select onchange="window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: Number(this.value) }))">
         <option>2</option>
         <option>4</option>
         <option>8</option>
@@ -66,6 +66,7 @@
               minimap: {enabled: false},
               theme: "vs-dark"
             });
+            window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: 2 }))
           });
       </script>
       </div>
