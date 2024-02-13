@@ -44,13 +44,13 @@
       </select>
       <br>
       <p>Spaces:</p>
-      <input checked type="checkbox" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none')">
+      <input checked type="checkbox" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');layout()">
       <label>HTML</label>
       <br>
-      <input checked type="checkbox" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none')">
+      <input checked type="checkbox" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');layout()">
       <label>CSS</label>
       <br>
-      <input checked type="checkbox" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none')">
+      <input checked type="checkbox" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');layout()">
       <label>JS</label>
    </dialog>
     <sl-split-panel position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
