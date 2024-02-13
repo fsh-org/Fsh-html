@@ -18,3 +18,9 @@ function up() {
 window.addEventListener("load", function(){
   document.body.onkeyup = up;
 })
+
+function layout() {
+  window.monaco.editor.getEditors().forEach(t => {
+    t.layout({});
+  })
+}
