@@ -28,6 +28,18 @@
         <option>4</option>
         <option>8</option>
       </select>
+      <br>
+      <label>Theme:</label>
+      <select onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ theme: this.value }))">
+        <option value="vs-dark">Dark</option>
+        <option value="vs-light">Light</option>
+      </select>
+      <br>
+      <label>Minimap:</label>
+      <select onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ minimap: {enabled: !!this.value} }))">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+      </select>
    </dialog>
     <sl-split-panel position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
       <sl-icon slot="divider" name="grip-vertical"></sl-icon>
