@@ -22,16 +22,22 @@
     <dialog id="settings">
       <button class="close" onclick="this.parentElement.close()">x</button>
       <h1>Settings</h1>
+      <label>Tab size:</label>
+      <select value="4">
+        <option>2</option>
+        <option>4</option>
+        <option>8</option>
+      </select>
    </dialog>
     <sl-split-panel position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
       <sl-icon slot="divider" name="grip-vertical"></sl-icon>
       <div style="position:relative" slot="start" style="overflow-y:auto">
         <button onclick="document.getElementById('settings').showModal()" style="position:absolute;top:0;right:0;padding:0;margin:0;width:20px;border-radius:0px;"><sl-icon name="gear"></sl-icon></button>
-        <p>HTML</p>
+        <div><img src="assets/html.svg" style="height: 14px;margin: 0;padding: 0;"><p style="display:inline-block;">HTML</p></div>
         <div id="html"></div>
-        <p>CSS</p>
+        <div><img src="assets/css.svg" style="height: 14px;margin: 0;padding: 0;"><p style="display:inline-block;">CSS</p></div>
         <div id="css"></div>
-        <p>JS</p>
+        <div><img src="assets/js.svg" style="height: 14px;margin: 0;padding: 0;"><p style="display:inline-block;">JS</p></div>
         <div id="js"></div>
         <script>
           require.config({ paths: { vs: 'https://unpkg.com/monaco-editor/min/vs' } });
