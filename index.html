@@ -36,7 +36,7 @@
       </select>
       <br>
       <label>Minimap:</label>
-      <select onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ minimap: {enabled: !!this.value} }))">
+      <select onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ minimap: {enabled: this.value=='true'} }))">
         <option value="false">No</option>
         <option value="true">Yes</option>
       </select>
