@@ -12,7 +12,7 @@ div[slot="start"] {
   display: flex;
   flex-direction: column;
 }
-div[slot="start"] div[id] {
+div[slot="start"] div[id="html"], div[id="css"], div[id="js"] {
   height: 100%;
 }
 iframe {
