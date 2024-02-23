@@ -44,29 +44,30 @@
       </select>
       <br>
       <p>Spaces:</p>
-      <input checked type="checkbox" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');layout()">
+      <input checked type="checkbox" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');document.getElementById('h-html').style.display = (this.checked ? '' : 'none');layout()">
       <label>HTML</label>
       <br>
-      <input checked type="checkbox" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');layout()">
+      <input checked type="checkbox" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
       <label>CSS</label>
       <br>
-      <input checked type="checkbox" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');layout()">
+      <input checked type="checkbox" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
       <label>JS</label>
    </dialog>
     <sl-split-panel position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
       <sl-icon slot="divider" name="grip-vertical"></sl-icon>
       <div style="position:relative" slot="start" style="overflow-y:auto">
         <button onclick="document.getElementById('settings').showModal()" style="position:absolute;top:0;right:0;padding:0;margin:0;width:20px;border-radius:0px;"><sl-icon name="gear"></sl-icon></button>
-        <div><img src="assets/html.svg" style="height: 14px;margin: 0;padding: 0;"><p style="display:inline-block;">HTML</p></div>
+        <div id="h-html"><img src="assets/html.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">HTML</p></div>
         <div id="html"></div>
-        <div><img src="assets/css.svg" style="height: 14px;margin: 0;padding: 0;"><p style="display:inline-block;">CSS</p></div>
+        <div id="h-css"><img src="assets/css.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">CSS</p></div>
         <div id="css"></div>
-        <div><img src="assets/js.svg" style="height: 14px;margin: 0;padding: 0;"><p style="display:inline-block;">JS</p></div>
+        <div id="h-js"><img src="assets/js.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">JS</p></div>
         <div id="js"></div>
         <script>
           require.config({ paths: { vs: 'https://unpkg.com/monaco-editor/min/vs' } });
           require(['vs/editor/editor.main'], function () {
             monaco.editor.create(document.getElementById('html'), {
+              value: `<!DOCTYPE html>\n<html lang="en">\n  <head>\n    \n  </head>\n  <body>\n    \n  </body>\n</html>`,
               language: "html",
               scrollBeyondLastLine: true,
               readOnly: false,
@@ -75,6 +76,7 @@
               theme: "vs-dark"
             });
             monaco.editor.create(document.getElementById('css'), {
+              value: `body {\n  background-color: black;\n  color: white;\n  font-family: Arial;\n}`,
               language: "css",
               scrollBeyondLastLine: true,
               readOnly: false,
