@@ -11,8 +11,8 @@ function up() {
   let iframe = document.getElementById('render');
   
   iframe.contentDocument.write('<style>'+data[1].getValue()+'</style>')
-  iframe.contentDocument.write('<script>'+data[2].getValue()+'</script>')
   iframe.contentDocument.write(data[0].getValue())
+  iframe.contentDocument.write('<script>'+data[2].getValue()+'</script>')
 }
 
 window.addEventListener("load", function(){
