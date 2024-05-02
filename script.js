@@ -10,7 +10,7 @@ function up() {
   sval = val;
 
   // Set iframe
-  document.querySelector('div[slot="end"] div[slot="start"]:has(iframe)').innerHTML = '<iframe id="render" title="Rendered content" style="background-color: #fff"></iframe>';
+  document.querySelector('div[slot="end"] div:has(iframe)').innerHTML = '<iframe id="render" title="Rendered content" style="background-color: #fff"></iframe>';
   let iframe = document.getElementById('render');
 
   // Help html
