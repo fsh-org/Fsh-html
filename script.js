@@ -37,6 +37,12 @@ function terminal(text) {
 }
 window.terminal = terminal;
 
+/* Console size correctly */
+function consoleLayout() {
+  document.querySelector("#readout").style.height = document.querySelector(".console").getBoundingClientRect().height+'px';
+}
+document.querySelector("sl-split-panel[vertical]").addEventlistener('sl-reposition', consoleLayout)
+
 /* Make editors set their size corretly */
 function layout() {
   window.monaco.editor.getEditors().forEach(t => {
