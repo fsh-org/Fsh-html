@@ -41,7 +41,8 @@ window.terminal = terminal;
 function consoleLayout() {
   document.querySelector("#readout").style.height = document.querySelector(".console").getBoundingClientRect().height+'px';
 }
-document.querySelector("sl-split-panel[vertical]").addEventlistener('sl-reposition', consoleLayout)
+document.querySelector("sl-split-panel[vertical]").addEventListener('sl-reposition', consoleLayout);
+consoleLayout();
 
 /* Make editors set their size corretly */
 function layout() {
