@@ -97,12 +97,15 @@
       </script>
       </div>
       <div style="position:relative" slot="end" style="overflow-y:auto">
-        <sl-split-panel position="80" vertical style="width:100vh;--min:20%;--max:80%;--divider-width:10px;">
-          <sl-icon slot="divider" name="grip-vertical"></sl-icon>
+        <sl-split-panel position="80" vertical style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
+          <sl-icon slot="divider" name="grip-horizontal"></sl-icon>
           <div style="position:relative" slot="start" style="overflow-y:auto">
             <iframe id="render" title="Rendered content" style="background-color: #fff"></iframe>
           </div>
-          <div style="position:relative" class="console" slot="end" style="overflow-y:auto"># Console</div>
+          <div style="position:relative" class="console" slot="end" style="overflow-y:auto">
+            <pre id="readout"># Console</pre>
+            <input>
+          </div>
         </sl-split-panel>
       </div>
     </sl-split-panel>
