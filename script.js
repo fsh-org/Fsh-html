@@ -19,6 +19,7 @@ function up() {
   console.info = function(...params){window.parent.window.terminal('Info: '+params.join(' '))}
   console.warn = function(...params){window.parent.window.terminal('Warn: '+params.join(' '))}
   console.error = function(...params){window.parent.window.terminal('Error: '+params.join(' '))}
+  window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('Error: '+errorMsg+'; Line '+lineNumber);return false;}
 </script>`)
 
   // Insert user html
@@ -36,13 +37,6 @@ function terminal(text) {
   document.getElementById('readout').innerHTML += '<br><label class="'+(text.startsWith('Info:') ? 'ci' : (text.startsWith('Warn:') ? 'cw' : (text.startsWith('Error:') ? 'ce': '')))+'">'+text+'</label>';
 }
 window.terminal = terminal;
-
-/* Console size correctly */
-function consoleLayout() {
-  document.querySelector("#readout").style.height = document.querySelector(".console").getBoundingClientRect().height+'px';
-}
-document.querySelector("sl-split-panel[vertical]").addEventListener('sl-reposition', consoleLayout);
-consoleLayout();
 
 /* Make editors set their size corretly */
 function layout() {
