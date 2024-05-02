@@ -49,11 +49,17 @@ button {
 }
 
 .ci {
+  color: #000;
+  padding: 1px 5px 1px 1px;
   background-color: #88f;
 }
 .cw {
+  color: #000;
+  padding: 1px 5px 1px 1px;
   background-color: #ff8;
 }
 .ce {
+  color: #000;
+  padding: 1px 5px 1px 1px;
   background-color: #f88;
 }
