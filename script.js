@@ -33,7 +33,7 @@ window.addEventListener("load", function(){
 
 /* Show on terminal */
 function terminal(text) {
-  document.getElementById('readout').innerHTML += text;
+  document.getElementById('readout').innerHTML += '<br><label class="'+(text.startsWith('Info:') ? 'ci' : (text.startsWith('Warn:') ? 'cw' : (text.startsWith('Error:') ? 'ce': '')))+'">'+text+'</label>';
 }
 window.terminal = terminal;
 
