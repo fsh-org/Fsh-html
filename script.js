@@ -7,6 +7,7 @@ function up() {
   // Check if changed
   let val = [data[0].getValue(), data[1].getValue(), data[2].getValue()]
   if (sval.join('|SEPARATOR|FSH|') == val.join('|SEPARATOR|FSH|')) return;
+  localStorage.set('autosave', val)
   sval = val;
 
   // Set iframe
@@ -19,6 +20,7 @@ function up() {
   console.info = function(...params){window.parent.window.terminal('Info: '+params.join(' '))}
   console.warn = function(...params){window.parent.window.terminal('Warn: '+params.join(' '))}
   console.error = function(...params){window.parent.window.terminal('Error: '+params.join(' '))}
+  console.clear = function(){window.parent.window.terminal('CLEAR MY TERMINAL')}
   window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('Error: '+errorMsg+'; Line '+lineNumber);return false;}
 </script>`)
 
@@ -29,11 +31,24 @@ function up() {
 }
 
 window.addEventListener("load", function(){
+  if (localStorage.get('autosave')) {
+    let editors = window.monaco.editor.getEditors();
+    let values = localStorage.get('autosave').split('|SEPARATOR|FSH|');
+    editors[0].getModel().setValue(values[0]);
+    editors[1].getModel().setValue(values[1]);
+    editors[2].getModel().setValue(values[2]);
+  } else {
+    up()
+  }
   document.body.onkeyup = up;
 })
 
 /* Show on terminal */
 function terminal(text) {
+  if (text == 'CLEAR MY TERMINAL') {
+    document.getElementById('readout').innerHTML = '# Console'
+    return;
+  }
   document.getElementById('readout').innerHTML += '<br><label class="'+(text.startsWith('Info:') ? 'ci' : (text.startsWith('Warn:') ? 'cw' : (text.startsWith('Error:') ? 'ce': '')))+'">'+text+'</label>';
 }
 window.terminal = terminal;
