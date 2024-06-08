@@ -7,7 +7,7 @@ function up() {
   // Check if changed
   let val = [data[0].getValue(), data[1].getValue(), data[2].getValue()]
   if (sval.join('|SEPARATOR|FSH|') == val.join('|SEPARATOR|FSH|')) return;
-  localStorage.setItem('autosave', val)
+  localStorage.setItem('autosave', val.join('|SEPARATOR|FSH|'))
   sval = val;
 
   // Set iframe
