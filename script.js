@@ -7,7 +7,7 @@ function up() {
   // Check if changed
   let val = [data[0].getValue(), data[1].getValue(), data[2].getValue()]
   if (sval.join('|SEPARATOR|FSH|') == val.join('|SEPARATOR|FSH|')) return;
-  localStorage.set('autosave', val)
+  localStorage.setItem('autosave', val)
   sval = val;
 
   // Set iframe
@@ -31,9 +31,9 @@ function up() {
 }
 
 window.addEventListener("load", function(){
-  if (localStorage.get('autosave')) {
+  if (localStorage.getItem('autosave')) {
     let editors = window.monaco.editor.getEditors();
-    let values = localStorage.get('autosave').split('|SEPARATOR|FSH|');
+    let values = localStorage.getItem('autosave').split('|SEPARATOR|FSH|');
     editors[0].getModel().setValue(values[0]);
     editors[1].getModel().setValue(values[1]);
     editors[2].getModel().setValue(values[2]);
