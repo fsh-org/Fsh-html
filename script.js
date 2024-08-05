@@ -21,13 +21,13 @@ function up() {
 
   // Help html
   iframe.contentDocument.write(`<script>
-  console.log = function(...params){window.parent.window.terminal(params.join(' '))}
-  console.info = function(...params){window.parent.window.terminal('Info: '+params.join(' '))}
-  console.warn = function(...params){window.parent.window.terminal('Warn: '+params.join(' '))}
-  console.error = function(...params){window.parent.window.terminal('Error: '+params.join(' '))}
-  console.debug = function(...params){window.parent.window.terminal('Debug: '+params.join(' '))}
-  console.clear = function(){window.parent.window.terminal('CLEAR MY TERMINAL')}
-  window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('Error: '+errorMsg+'; Line '+lineNumber);return false;}
+  console.log = function(...params){window.parent.window.terminal('log', params)}
+  console.info = function(...params){window.parent.window.terminal('info', params)}
+  console.warn = function(...params){window.parent.window.terminal('warn', params)}
+  console.error = function(...params){window.parent.window.terminal('error', params)}
+  console.debug = function(...params){window.parent.window.terminal('debug', parmas)}
+  console.clear = function(){window.parent.window.terminal('clear', 'The cleansing')}
+  window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('error', errorMsg+'; Line '+lineNumber);return false;}
 </script>`)
 
   // Insert user html
@@ -50,21 +50,41 @@ window.addEventListener("load", function(){
 })
 
 /* Show on terminal */
-function terminal(text) {
-  if (text == 'CLEAR MY TERMINAL') {
+const prefix = {
+  log: '',
+  info: 'Info: ',
+  warn: 'Warn: ',
+  error: 'Error: ',
+  debug: 'Debug: '
+}
+const cssType = {
+  log: '',
+  info: 'ci',
+  warn: 'cw',
+  error: 'ce',
+  debug: 'cd'
+}
+function terminal(type, ...params) {
+  if (type == 'clear') {
     document.getElementById('readout').innerHTML = '# Console'
     return;
   }
-  if (text instanceof Object) {
-    let changed = 'failed to decode';
-    try {
-      changed = JSON.stringify(text);
-    } catch (err) {
-      // ignore
+  let text = [prefix[type]];
+  params.forEach(param => {
+    if (param instanceof Object) {
+      let changed = 'failed to decode';
+      try {
+        changed = JSON.stringify(text);
+      } catch (err) {
+        // ignore
+      }
+      text.push(param + ': ' + changed)
+    } else {
+      text.push(param)
     }
-    text = text + ': ' + changed
-  }
-  document.getElementById('readout').innerHTML += '<br><label class="'+(text.startsWith('Info:') ? 'ci' : (text.startsWith('Warn:') ? 'cw' : (text.startsWith('Error:') ? 'ce': (text.startsWith('Debug:') ? 'cd': ''))))+'">'+text+'</label>';
+  })
+  text = text.join(' ')
+  document.getElementById('readout').innerHTML += `<br><label class="${cssType[type]}">${text}</label>`;
 }
 window.terminal = terminal;
 
