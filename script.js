@@ -74,7 +74,7 @@ function terminal(type, ...params) {
     if (param instanceof Object) {
       let changed = 'failed to decode';
       try {
-        changed = JSON.stringify(text);
+        changed = JSON.stringify(param);
       } catch (err) {
         // ignore
       }
