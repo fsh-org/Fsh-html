@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/monaco-editor/min/vs/loader.js"></script>
   </head>
   <body>
-    <div style="overflow-y:auto" id="editors">
+    <div id="editors">
       <dialog id="settings">
         <button class="close" onclick="this.parentElement.close()">x</button>
         <h1>Settings</h1>
@@ -58,12 +58,12 @@
         <input checked type="checkbox" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none')">
         <label>Console</label>
       </dialog>
-      <button onclick="document.getElementById('settings').showModal()" style="position:absolute;top:0;right:0;padding:0;margin:0;width:20px;border-radius:0px;"><sl-icon name="gear"></sl-icon></button>
-      <div id="h-html"><img src="assets/html.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">HTML</p></div>
+      <button onclick="document.getElementById('settings').showModal()" class="setting"><sl-icon name="gear"></sl-icon></button>
+      <div id="h-html"><img src="/assets/html.svg" class="icon"><p class="icon-text">HTML</p></div>
       <div id="html"></div>
-      <div id="h-css"><img src="assets/css.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">CSS</p></div>
+      <div id="h-css"><img src="/assets/css.svg" class="icon"><p class="icon-text">CSS</p></div>
       <div id="css"></div>
-      <div id="h-js"><img src="assets/js.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">JS</p></div>
+      <div id="h-js"><img src="/assets/js.svg" class="icon"><p class="icon-text">JS</p></div>
       <div id="js"></div>
       <script>
         require.config({ paths: { vs: 'https://unpkg.com/monaco-editor/min/vs' } });
@@ -98,12 +98,12 @@
         });
       </script>
     </div>
-    <div style="display:flex;flex-direction:column;" id="view">
-      <div style="flex:1;position:relative;">
-        <iframe id="render" title="Rendered content" style="background-color:#fff"></iframe>
+    <div id="view">
+      <div class="render-div">
+        <iframe id="render" title="Rendered content"></iframe>
       </div>
-      <div class="console" id="console" style="overflow-y:auto;height:25vh;border-top:2px #fff solid;padding-top:5px;">
-        <p id="readout" style="height:25vh;overflow-y:auto;"># Console</p>
+      <div class="console" id="console">
+        <p id="readout"># Console</p>
       </div>
     </div>
   </body>
