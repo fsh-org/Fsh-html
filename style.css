@@ -62,6 +62,9 @@ dialog {
   width: 18px;
   height: 18px;
   border-radius: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 select {
   margin: 0px;
