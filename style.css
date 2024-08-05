@@ -21,11 +21,7 @@ dialog {
   top: 0;
   background: transparent;
   border: none;
-  border-top: 2px #fff solid;
   margin: 2px;
-  padding-top: 5px;
-  height: 25vh;
-  overflow-y: auto;
 }
 
 .gutter {
@@ -94,6 +90,12 @@ iframe {
   background-color: #fff;
 }
 
+.console {
+  overflow-y: auto;
+  height: 25vh;
+  border-top: 2px #fff solid;
+  padding-top: 5px;
+}
 #readout {
   height:25vh;overflow-y:auto;
 }
