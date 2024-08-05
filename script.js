@@ -72,8 +72,7 @@ function terminal(type, params) {
   }
   let text = [prefix[type]];
   params.forEach(param => {
-    console.log(typeof param);
-    if (param instanceof Object) {
+    if (typeof param === 'object') {
       let changed = 'failed to decode';
       try {
         changed = JSON.stringify(param);
