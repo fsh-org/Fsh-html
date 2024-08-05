@@ -6,6 +6,7 @@
     <link rel="icon" href="https://fsh.plus/fsh.png" type="image/png">
     <meta name="description" content="Fsh html, Live html editor online">
     <!-- ------- -->
+    <link rel="stylesheet" href="https://fsh.plus/media/style.css">
     <link rel="stylesheet" href="/style.css">
     <script src="/script.js"></script>
     <meta charset="UTF-8">
@@ -16,94 +17,96 @@
     <!-- ------------------ -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.1/cdn/themes/dark.css"/>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.1/cdn/shoelace.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/split.js"></script>
     <script src="https://unpkg.com/monaco-editor/min/vs/loader.js"></script>
   </head>
   <body>
-    <dialog id="settings">
-      <button class="close" onclick="this.parentElement.close()">x</button>
-      <h1>Settings</h1>
-      <label>Tab size:</label>
-      <select onchange="window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: Number(this.value) }))">
-        <option>2</option>
-        <option>4</option>
-        <option>8</option>
-      </select>
-      <br>
-      <label>Theme:</label>
-      <select onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ theme: this.value }))">
-        <option value="vs-dark">Dark</option>
-        <option value="vs">Light</option>
-        <option value="hc-black">Dark (HC)</option>
-        <option value="hc-light">Light (HC)</option>
-      </select>
-      <br>
-      <label>Minimap:</label>
-      <select onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ minimap: {enabled: this.value=='true'} }))">
-        <option value="false">No</option>
-        <option value="true">Yes</option>
-      </select>
-      <br>
-      <p>Spaces:</p>
-      <input checked type="checkbox" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');document.getElementById('h-html').style.display = (this.checked ? '' : 'none');layout()">
-      <label>HTML</label>
-      <br>
-      <input checked type="checkbox" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
-      <label>CSS</label>
-      <br>
-      <input checked type="checkbox" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
-      <label>JS</label>
-    </dialog>
-    <sl-split-panel position="50" style="height:100vh;--min:20%;--max:80%;--divider-width:10px;">
-      <sl-icon slot="divider" name="grip-vertical"></sl-icon>
-      <div style="position:relative" slot="start" style="overflow-y:auto">
-        <button onclick="document.getElementById('settings').showModal()" style="position:absolute;top:0;right:0;padding:0;margin:0;width:20px;border-radius:0px;"><sl-icon name="gear"></sl-icon></button>
-        <div id="h-html"><img src="assets/html.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">HTML</p></div>
-        <div id="html"></div>
-        <div id="h-css"><img src="assets/css.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">CSS</p></div>
-        <div id="css"></div>
-        <div id="h-js"><img src="assets/js.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">JS</p></div>
-        <div id="js"></div>
-        <script>
-          require.config({ paths: { vs: 'https://unpkg.com/monaco-editor/min/vs' } });
-          require(['vs/editor/editor.main'], function () {
-            monaco.editor.create(document.getElementById('html'), {
-              value: `<!DOCTYPE html>\n<html lang="en">\n  <head>\n    \n  </head>\n  <body>\n    \n  </body>\n</html>`,
-              language: "html",
-              scrollBeyondLastLine: true,
-              readOnly: false,
-              automaticLayout: true,
-              minimap: {enabled: false},
-              theme: "vs-dark"
-            });
-            monaco.editor.create(document.getElementById('css'), {
-              value: `body {\n  background-color: black;\n  color: white;\n  font-family: Arial;\n}`,
-              language: "css",
-              scrollBeyondLastLine: true,
-              readOnly: false,
-              automaticLayout: true,
-              minimap: {enabled: false},
-              theme: "vs-dark"
-            });
-            monaco.editor.create(document.getElementById('js'), {
-              language: "javascript",
-              scrollBeyondLastLine: true,
-              readOnly: false,
-              automaticLayout: true,
-              minimap: {enabled: false},
-              theme: "vs-dark"
-            });
-            window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: 2 }))
+    <div style="overflow-y:auto">
+      <dialog id="settings">
+        <button class="close" onclick="this.parentElement.close()">x</button>
+        <h1>Settings</h1>
+        <label>Tab size:</label>
+        <select onchange="window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: Number(this.value) }))">
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>8</option>
+        </select>
+        <br>
+        <label>Theme:</label>
+        <select onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ theme: this.value }))">
+          <option value="vs-dark">Dark</option>
+          <option value="vs">Light</option>
+          <option value="hc-black">Dark (HC)</option>
+          <option value="hc-light">Light (HC)</option>
+        </select>
+        <br>
+        <label>Minimap:</label>
+        <select onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ minimap: {enabled: this.value=='true'} }))">
+          <option value="false">No</option>
+          <option value="true">Yes</option>
+        </select>
+        <br>
+        <p>Spaces:</p>
+        <input checked type="checkbox" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');document.getElementById('h-html').style.display = (this.checked ? '' : 'none');layout()">
+        <label>HTML</label>
+        <br>
+        <input checked type="checkbox" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
+        <label>CSS</label>
+        <br>
+        <input checked type="checkbox" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
+        <label>JS</label>
+        <br>
+        <input checked type="checkbox" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none')">
+        <label>Console</label>
+      </dialog>
+      <button onclick="document.getElementById('settings').showModal()" style="position:absolute;top:0;right:0;padding:0;margin:0;width:20px;border-radius:0px;"><sl-icon name="gear"></sl-icon></button>
+      <div id="h-html"><img src="assets/html.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">HTML</p></div>
+      <div id="html"></div>
+      <div id="h-css"><img src="assets/css.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">CSS</p></div>
+      <div id="css"></div>
+      <div id="h-js"><img src="assets/js.svg" style="height: 14px;margin: 0;padding: 0;margin-right: 5px;"><p style="display:inline-block;">JS</p></div>
+      <div id="js"></div>
+      <script>
+        require.config({ paths: { vs: 'https://unpkg.com/monaco-editor/min/vs' } });
+        require(['vs/editor/editor.main'], function () {
+          monaco.editor.create(document.getElementById('html'), {
+            value: `<!DOCTYPE html>\n<html lang="en">\n  <head>\n    \n  </head>\n  <body>\n    \n  </body>\n</html>`,
+            language: "html",
+            scrollBeyondLastLine: true,
+            readOnly: false,
+            automaticLayout: true,
+            minimap: {enabled: false},
+            theme: "vs-dark"
           });
-      </script>
+          monaco.editor.create(document.getElementById('css'), {
+            value: `body {\n  background-color: black;\n  color: white;\n  font-family: Arial;\n}`,
+            language: "css",
+            scrollBeyondLastLine: true,
+            readOnly: false,
+            automaticLayout: true,
+            minimap: {enabled: false},
+            theme: "vs-dark"
+          });
+          monaco.editor.create(document.getElementById('js'), {
+            language: "javascript",
+            scrollBeyondLastLine: true,
+            readOnly: false,
+            automaticLayout: true,
+            minimap: {enabled: false},
+            theme: "vs-dark"
+          });
+          window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: 2 }))
+        });
+    </script>
+    </div>
+    <div style="display:flex;flex-direction:column;">
+      <div style="flex:1">
+        <iframe id="render" title="Rendered content" style="background-color:#fff"></iframe>
       </div>
-      <div style="position:relative;display:flex;flex-direction:column;" slot="end" style="overflow-y:auto">
-        <div style="position:relative;flex:1;">
-          <iframe id="render" title="Rendered content" style="background-color: #fff"></iframe>
-        </div>
-        <div class="console" style="position:relative;overflow-y:auto;height:25vh;border-top:2px #fff solid;padding-top:5px;">
-          <p id="readout" style="height:25vh;overflow-y:auto;"># Console</p>
-        </div>
+      <div class="console" id="console" style="overflow-y:auto;height:25vh;border-top:2px #fff solid;padding-top:5px;">
+        <p id="readout" style="height:25vh;overflow-y:auto;"># Console</p>
       </div>
-    </sl-split-panel>
+    </div>
   </body>
 </html>
