@@ -25,7 +25,7 @@ function up() {
   console.info = function(...params){window.parent.window.terminal('info', params)}
   console.warn = function(...params){window.parent.window.terminal('warn', params)}
   console.error = function(...params){window.parent.window.terminal('error', params)}
-  console.debug = function(...params){window.parent.window.terminal('debug', parmas)}
+  console.debug = function(...params){window.parent.window.terminal('debug', params)}
   console.clear = function(){window.parent.window.terminal('clear', 'The cleansing')}
   window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('error', errorMsg+'; Line '+lineNumber);return false;}
 </script>`)
