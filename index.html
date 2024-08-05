@@ -21,7 +21,7 @@
     <script src="https://unpkg.com/monaco-editor/min/vs/loader.js"></script>
   </head>
   <body>
-    <div style="overflow-y:auto">
+    <div style="overflow-y:auto" id="editors">
       <dialog id="settings">
         <button class="close" onclick="this.parentElement.close()">x</button>
         <h1>Settings</h1>
@@ -98,9 +98,9 @@
           });
           window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: 2 }))
         });
-    </script>
+      </script>
     </div>
-    <div style="display:flex;flex-direction:column;">
+    <div style="display:flex;flex-direction:column;" id="view">
       <div style="flex:1">
         <iframe id="render" title="Rendered content" style="background-color:#fff"></iframe>
       </div>
