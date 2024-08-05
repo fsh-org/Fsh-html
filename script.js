@@ -65,14 +65,13 @@ const cssType = {
   error: 'ce',
   debug: 'cd'
 }
-function terminal(type, ...params) {
+function terminal(type, params) {
   if (type == 'clear') {
     document.getElementById('readout').innerHTML = '# Console'
     return;
   }
   let text = [prefix[type]];
   params.forEach(param => {
-    console.log(param)
     if (param instanceof Object) {
       let changed = 'failed to decode';
       try {
