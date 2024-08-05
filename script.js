@@ -54,6 +54,15 @@ function terminal(text) {
     document.getElementById('readout').innerHTML = '# Console'
     return;
   }
+  if (text instanceof Object) {
+    let changed = 'failed to decode';
+    try {
+      changed = JSON.stringify(text);
+    } catch (err) {
+      // ignore
+    }
+    text = text + ': ' + changed
+  }
   document.getElementById('readout').innerHTML += '<br><label class="'+(text.startsWith('Info:') ? 'ci' : (text.startsWith('Warn:') ? 'cw' : (text.startsWith('Error:') ? 'ce': '')))+'">'+text+'</label>';
 }
 window.terminal = terminal;
