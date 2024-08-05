@@ -41,7 +41,7 @@ dialog {
 #editors {
   display: flex;
   overflow-y: auto;
-  position: absolute;
+  position: relative;
   flex-direction: column;
 }
 #html, #css, #js {
