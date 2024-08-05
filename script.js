@@ -67,6 +67,7 @@ function layout() {
 
 /* Presets */
 function setPreset(preset) {
+  let editors = window.monaco.editor.getEditors();
   switch (preset) {
     case 'blank':
       editors[0].getModel().setValue('');
