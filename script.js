@@ -25,6 +25,7 @@ function up() {
   console.info = function(...params){window.parent.window.terminal('Info: '+params.join(' '))}
   console.warn = function(...params){window.parent.window.terminal('Warn: '+params.join(' '))}
   console.error = function(...params){window.parent.window.terminal('Error: '+params.join(' '))}
+  console.debug = function(...params){window.parent.window.terminal('Debug: '+params.join(' '))}
   console.clear = function(){window.parent.window.terminal('CLEAR MY TERMINAL')}
   window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('Error: '+errorMsg+'; Line '+lineNumber);return false;}
 </script>`)
@@ -63,7 +64,7 @@ function terminal(text) {
     }
     text = text + ': ' + changed
   }
-  document.getElementById('readout').innerHTML += '<br><label class="'+(text.startsWith('Info:') ? 'ci' : (text.startsWith('Warn:') ? 'cw' : (text.startsWith('Error:') ? 'ce': '')))+'">'+text+'</label>';
+  document.getElementById('readout').innerHTML += '<br><label class="'+(text.startsWith('Info:') ? 'ci' : (text.startsWith('Warn:') ? 'cw' : (text.startsWith('Error:') ? 'ce': (text.startsWith('Debug:') ? 'cd': ''))))+'">'+text+'</label>';
 }
 window.terminal = terminal;
 
