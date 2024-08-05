@@ -1,3 +1,6 @@
+// Set splits
+Split(['#editors', '#view'])
+
 let sval = [];
 
 /* On change */
