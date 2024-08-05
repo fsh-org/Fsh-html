@@ -26,9 +26,9 @@ function up() {
   console.warn = function(...params){window.parent.window.terminal('warn', params)}
   console.error = function(...params){window.parent.window.terminal('error', params)}
   console.debug = function(...params){window.parent.window.terminal('debug', params)}
-  console.assert = function(assertion, ...params){if (!assertion) {window.parent.window.terminal('error', 'Assertion failed')}}
-  console.clear = function(){window.parent.window.terminal('clear', 'The cleansing')}
-  window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('error', errorMsg+'; Line '+lineNumber);return false;}
+  console.assert = function(assertion, ...params){if (!assertion) {window.parent.window.terminal('error', ['Assertion failed'])}}
+  console.clear = function(){window.parent.window.terminal('clear', ['The cleansing'])}
+  window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('error', [errorMsg+'; Line '+lineNumber]);return false;}
 </script>`)
 
   // Insert user html
