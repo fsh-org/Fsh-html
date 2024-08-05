@@ -64,3 +64,22 @@ function layout() {
     t.layout({});
   })
 }
+
+/* Presets */
+function setPreset(preset) {
+  switch (preset) {
+    case 'blank':
+      editors[0].getModel().setValue('');
+      editors[1].getModel().setValue('');
+      editors[2].getModel().setValue('');
+      break;
+    case 'blank':
+      editors[0].getModel().setValue(`<!DOCTYPE html>\n<html lang="en">\n  <head>\n    \n  </head>\n  <body>\n    \n  </body>\n</html>`);
+      editors[1].getModel().setValue(`body {\n  background-color: black;\n  color: white;\n  font-family: Arial;\n}`);
+      editors[2].getModel().setValue('');
+      break;
+    default:
+      alert('An unknown preset was attempted to be loaded')
+      throw new Error('Unknown preset: '+preset)
+  }
+}
