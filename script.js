@@ -1,5 +1,7 @@
 // Set splits
-Split(['#editors', '#view'])
+document.addEventListener("DOMContentLoaded", () => {
+  Split(['#editors', '#view'])
+});
 
 let sval = [];
 
