@@ -101,7 +101,9 @@
             minimap: {enabled: false},
             theme: "vs-dark"
           });
-          window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: 2 }))
+          let editors = window.monaco.editor.getEditors();
+          editors.forEach(t=>t.getModel().updateOptions({ tabSize: 2 }));
+          editors.forEach(t=>t.onDidChangeModelContent(()=>{up()}));
         });
       </script>
     </div>
