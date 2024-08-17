@@ -1,7 +1,7 @@
 // Set splits
 document.addEventListener("DOMContentLoaded", () => {
   Split(['#editors', '#view']);
-  Split(['.render-div', '#console'], { direction: 'vertical' });
+  Split(['.render-div', '#console'], { direction: 'vertical', sizes: [75, 25] });
 });
 
 let sval = [];
