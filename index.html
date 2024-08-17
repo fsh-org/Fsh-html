@@ -55,7 +55,7 @@
         <input checked type="checkbox" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
         <label>JS</label>
         <br>
-        <input checked type="checkbox" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none')">
+        <input checked type="checkbox" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none');document.querySelector('.gutter.gutter-vertical').style.display = (this.checked ? '' : 'none')">
         <label>Console</label>
       </dialog>
       <dialog id="presets">
