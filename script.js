@@ -44,10 +44,10 @@ window.addEventListener("load", function(){
     editors[0].getModel().setValue(values[0]);
     editors[1].getModel().setValue(values[1]);
     editors[2].getModel().setValue(values[2]);
+    up()
   } else {
     up()
   }
-  document.body.onkeyup = up;
 })
 
 /* Show on terminal */
