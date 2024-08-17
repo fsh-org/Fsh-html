@@ -109,7 +109,8 @@ iframe {
   padding-top: 5px;
 }
 #readout {
-  height:25vh;overflow-y:auto;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .ci {
