@@ -82,7 +82,7 @@ function terminal(type, params) {
       }
       text.push(param + ': ' + changed)
     } else {
-      text.push(param)
+      text.push(param.replaceAll('\n', '<br>'))
     }
   })
   text = text.join(' ')
