@@ -34,7 +34,7 @@ function up() {
 
   function handleInfinite(code) {
     if (document.getElementById('freeze').checked) {
-      return code.replaceAll(/((for|while) *?\([^¬]*?\)[^¬]*?{)/g, 'if(!__c)window.__c=0;$1__c++;if(window.__c>1000){throw new Error("Infinite loop")};');
+      return code.replaceAll(/((for|while) *?\([^¬]*?\)[^¬]*?{)/g, 'if(!window.__c)window.__c=0;$1window.__c++;if(window.__c>1000){throw new Error("Infinite loop")};');
     } else {
       return code;
     }
