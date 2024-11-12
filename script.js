@@ -30,12 +30,19 @@ function up() {
   console.assert = function(assertion, ...params){if (!assertion) {window.parent.window.terminal('error', ['Assertion failed'])}}
   console.clear = function(){window.parent.window.terminal('clear', ['The cleansing'])}
   window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('error', [errorMsg+'; Line '+lineNumber]);return false;}
-</script>`)
+</script>`);
 
+  function handleInfinite(code) {
+    if (document.getElementById('freeze').checked) {
+      return code.replaceAll(/((for|while) *?\([^¬]*?\)[^¬]*?{)/g, 'if(!__c)window.__c=0;$1__c++;if(window.__c>1000){throw new Error("Infinite loop")};');
+    } else {
+      return code;
+    }
+  }
   // Insert user html
-  iframe.contentDocument.write('<style>'+data[1].getValue()+'</style>')
-  iframe.contentDocument.write(data[0].getValue())
-  iframe.contentDocument.write('<script>'+data[2].getValue()+'</script>')
+  iframe.contentDocument.write('<style>'+data[1].getValue()+'</style>');
+  iframe.contentDocument.write(handleInfinite(data[0].getValue()));
+  iframe.contentDocument.write('<script>'+handleInfinite(data[2].getValue())+'</script>');
 }
 
 window.addEventListener("load", function(){
