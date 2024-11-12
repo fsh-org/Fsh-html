@@ -57,6 +57,9 @@
         <br>
         <input checked type="checkbox" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none');document.querySelector('.gutter.gutter-vertical').style.display = (this.checked ? '' : 'none')">
         <label>Console</label>
+        <br>
+        <input checked type="checkbox" id="freeze">
+        <label for="freeze">Prevent browser freeze</label>
       </dialog>
       <dialog id="presets">
         <button class="close" onclick="this.parentElement.close()">x</button>
