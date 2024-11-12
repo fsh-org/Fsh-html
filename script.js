@@ -52,9 +52,9 @@ window.addEventListener("load", function(){
     editors[0].getModel().setValue(values[0]);
     editors[1].getModel().setValue(values[1]);
     editors[2].getModel().setValue(values[2]);
-    up()
+    up();
   } else {
-    up()
+    up();
   }
 })
 
@@ -87,9 +87,9 @@ function terminal(type, params) {
       } catch (err) {
         // ignore
       }
-      text.push(param + ': ' + changed)
+      text.push(param + ': ' + changed);
     } else {
-      text.push(param.replaceAll('\n', '<br>'))
+      text.push(param.toString().replaceAll('\n', '<br>'));
     }
   })
   text = text.join(' ')
