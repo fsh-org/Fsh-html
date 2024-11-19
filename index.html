@@ -23,24 +23,24 @@
       <dialog id="settings">
         <button class="close" onclick="this.parentElement.close()">x</button>
         <h2>Settings</h2>
-        <label>Tab size:</label>
-        <select onchange="window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: Number(this.value) }))">
+        <label for="opttabsize">Tab size:</label>
+        <select id="opttabsize" onchange="window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: Number(this.value) }))">
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option>8</option>
         </select>
         <br>
-        <label>Theme:</label>
-        <select onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ theme: this.value }))">
+        <label for="opttheme">Theme:</label>
+        <select id="opttheme" onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ theme: this.value }))">
           <option value="vs-dark">Dark</option>
           <option value="vs">Light</option>
           <option value="hc-black">Dark (HC)</option>
           <option value="hc-light">Light (HC)</option>
         </select>
         <br>
-        <label>Minimap:</label>
-        <select onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ minimap: {enabled: this.value=='true'} }))">
+        <label for="optminmap">Minimap:</label>
+        <select id="optminmap" onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ minimap: {enabled: this.value=='true'} }))">
           <option value="false">No</option>
           <option value="true">Yes</option>
         </select>
