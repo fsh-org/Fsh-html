@@ -7,8 +7,8 @@
     <meta name="description" content="Fsh html, Live html editor online">
     <!-- ------- -->
     <link rel="stylesheet" href="https://fsh.plus/media/style.css">
-    <link rel="stylesheet" href="/style.css">
-    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/media/style.css">
+    <script src="/media/script.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,17 +46,18 @@
         </select>
         <br>
         <p>Spaces:</p>
-        <input checked type="checkbox" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');document.getElementById('h-html').style.display = (this.checked ? '' : 'none');layout()">
-        <label>HTML</label>
+        <input checked type="checkbox" id="optspacehtml" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');document.getElementById('h-html').style.display = (this.checked ? '' : 'none');layout()">
+        <label for="optspacehtml">HTML</label>
         <br>
-        <input checked type="checkbox" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
-        <label>CSS</label>
+        <input checked type="checkbox" id="optspacecss" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
+        <label for="optspacecss">CSS</label>
         <br>
-        <input checked type="checkbox" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
-        <label>JS</label>
+        <input checked type="checkbox" id="optspacejs" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
+        <label for="optspacejs">JS</label>
         <br>
-        <input checked type="checkbox" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none');document.querySelector('.gutter.gutter-vertical').style.display = (this.checked ? '' : 'none')">
-        <label>Console</label>
+        <p>Features:</p>
+        <input checked type="checkbox" id="console-enabled" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none');document.querySelector('.gutter.gutter-vertical').style.display = (this.checked ? '' : 'none')">
+        <label for="console-enabled">Console</label>
         <br>
         <input checked type="checkbox" id="freeze">
         <label for="freeze">Prevent browser freeze</label>
