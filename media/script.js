@@ -21,7 +21,8 @@ function up() {
   let iframe = document.getElementById('render');
 
   // Help html
-  iframe.contentDocument.write(`<script>
+  if (document.getElementById('console-enabled').checked) {
+    iframe.contentDocument.write(`<script>
   console.log = function(...params){window.parent.window.terminal('log', params)}
   console.info = function(...params){window.parent.window.terminal('info', params)}
   console.warn = function(...params){window.parent.window.terminal('warn', params)}
@@ -31,6 +32,7 @@ function up() {
   console.clear = function(){window.parent.window.terminal('clear', ['The cleansing'])}
   window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('error', [errorMsg+'; Line '+lineNumber]);return false;}
 </script>`);
+  }
 
   function handleInfinite(code) {
     if (document.getElementById('freeze').checked) {
