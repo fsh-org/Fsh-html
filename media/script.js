@@ -95,7 +95,7 @@ function terminal(type, params) {
     }
   })
   text = text.join(' ')
-  document.getElementById('readout').innerHTML += `<br><label class="${cssType[type]}">${text}</label>`;
+  document.getElementById('readout').innerHTML += `<br><pre class="${cssType[type]}">${text}</pre>`;
 }
 window.terminal = terminal;
 
