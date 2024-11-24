@@ -63,10 +63,10 @@ window.addEventListener("load", function(){
 /* Show on terminal */
 const prefix = {
   log: '',
-  info: 'Info: ',
-  warn: 'Warn: ',
-  error: 'Error: ',
-  debug: 'Debug: '
+  info: 'Info:',
+  warn: 'Warn:',
+  error: 'Error:',
+  debug: 'Debug:'
 }
 const cssType = {
   log: '',
@@ -95,7 +95,7 @@ function terminal(type, params) {
     }
   })
   text = text.join(' ')
-  document.getElementById('readout').innerHTML += `<br><pre class="${cssType[type]}">${text}</pre>`;
+  document.getElementById('readout').innerHTML += `<pre class="${cssType[type]}">${text}</pre>`;
 }
 window.terminal = terminal;
 
