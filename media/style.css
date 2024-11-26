@@ -120,24 +120,29 @@ iframe {
   height: 100%;
   overflow-y: auto;
 }
+pre {
+  width: fit-content;
+  margin: 4px 0px;
+  text-wrap: auto;
+}
 
 .ci {
-  color: #000;
-  padding: 1px 5px 1px 1px;
-  background-color: #88f;
+  color: var(--bg-0);
+  padding: 1px;
+  background-color: var(--blue-1);
 }
 .cw {
-  color: #000;
-  padding: 1px 5px 1px 1px;
-  background-color: #ff8;
+  color: var(--bg-0);
+  padding: 1px;
+  background-color: var(--yellow-1);
 }
 .ce {
-  color: #000;
-  padding: 1px 5px 1px 1px;
-  background-color: #f88;
+  color: var(--bg-0);
+  padding: 1px;
+  background-color: var(--red-1);
 }
 .cd {
-  color: #000;
-  padding: 1px 5px 1px 1px;
-  background-color: #f8f;
+  color: var(--bg-0);
+  padding: 1px;
+  background-color: var(--purple-1);
 }
