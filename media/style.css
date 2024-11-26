@@ -49,11 +49,14 @@ dialog {
 #html, #css, #js {
   height: 100%;
 }
+#h-html, #h-css, #h-js {
+  display: flex;
+  align-items: center;
+}
 .icon {
-  height: 14px;
-  margin: 0;
-  padding: 0;
-  margin-right: 5px;
+  height: 20px;
+  margin: 0px 5px;
+  padding: 0px;
 }
 .icon-text {
   display: inline-block;
