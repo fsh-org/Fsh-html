@@ -52,6 +52,7 @@ dialog {
 #h-html, #h-css, #h-js {
   display: flex;
   align-items: center;
+  height: 20px;
 }
 .icon {
   height: 20px;
@@ -76,6 +77,7 @@ dialog {
 }
 select {
   margin: 0px;
+  padding: 2px;
 }
 .presets {
   position: absolute;
