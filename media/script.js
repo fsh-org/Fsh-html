@@ -89,9 +89,9 @@ function terminal(type, params) {
       } catch (err) {
         // ignore
       }
-      text.push(param + ': ' + changed);
+      text.push(param+': '+changed);
     } else {
-      text.push(param.toString().replaceAll('\n', '<br>'));
+      text.push((param??'undefined').toString().replaceAll('\n', '<br>'));
     }
   })
   text = text.join(' ')
@@ -121,7 +121,7 @@ function setPreset(preset) {
       editors[2].getModel().setValue('');
       break;
     default:
-      alert('An unknown preset was attempted to be loaded')
-      throw new Error('Unknown preset: '+preset)
+      alert('An unknown preset was attempted to be loaded');
+      throw new Error('Unknown preset: '+preset);
   }
 }
