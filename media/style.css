@@ -48,6 +48,7 @@ dialog {
 }
 #html, #css, #js {
   height: 100%;
+  overflow: hidden;
 }
 #h-html, #h-css, #h-js {
   display: flex;
