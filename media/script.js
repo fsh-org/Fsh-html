@@ -14,14 +14,14 @@ function up() {
   let val = [data[0].getValue(), data[1].getValue(), data[2].getValue()]
   if (sval.join('|SEPARATOR|FSH|') == val.join('|SEPARATOR|FSH|')) return;
   localStorage.setItem('autosave', val.join('|SEPARATOR||FSH|'))
-  sval = val;
 
   // Soft refresh for css
   if (val[0]===sval[0]&&val[2]===sval[2] && val[1]!==sval[1]) {
-    let iframe = document.getElementById('render');
-    iframe.contentDocument.getElementById('__FSH_CSS').innerHTML = val[1];
+    sval = val;
+    document.getElementById('render').contentDocument.getElementById('__FSH_CSS').innerHTML = val[1];
     return;
   }
+  sval = val;
 
   // Set iframe
   document.querySelector('#view div:has(iframe)').innerHTML = '<iframe id="render" title="Rendered content" style="background-color: #fff"></iframe>';
