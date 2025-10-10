@@ -16,6 +16,13 @@ function up() {
   localStorage.setItem('autosave', val.join('|SEPARATOR||FSH|'))
   sval = val;
 
+  // Soft refresh for css
+  if (val[0]===sval[0]&&val[2]===sval[2] && val[1]!==sval[1]) {
+    let iframe = document.getElementById('render');
+    iframe.contentDocument.getElementById('__FSH_CSS').innerHTML = val[1];
+    return;
+  }
+
   // Set iframe
   document.querySelector('#view div:has(iframe)').innerHTML = '<iframe id="render" title="Rendered content" style="background-color: #fff"></iframe>';
   let iframe = document.getElementById('render');
@@ -42,7 +49,8 @@ function up() {
     }
   }
   // Insert user html
-  iframe.contentDocument.write('<style>'+data[1].getValue()+'</style>');
+  iframe.contentWindow.__c = 0;
+  iframe.contentDocument.write('<style id="__FSH_CSS">'+data[1].getValue()+'</style>');
   iframe.contentDocument.write(handleInfinite(data[0].getValue()));
   iframe.contentDocument.write('<script>'+handleInfinite(data[2].getValue())+'</script>');
 }
