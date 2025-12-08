@@ -1,5 +1,5 @@
 // Set splits
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   Split(['#editors', '#view']);
   Split(['.render-div', '#console'], { direction: 'vertical', sizes: [75, 25] });
 });
@@ -30,23 +30,21 @@ function up() {
   // Help html
   if (document.getElementById('console-enabled').checked) {
     iframe.contentDocument.write(`<script>
-  console.log = function(...params){window.parent.window.terminal('log', params)}
-  console.info = function(...params){window.parent.window.terminal('info', params)}
-  console.warn = function(...params){window.parent.window.terminal('warn', params)}
-  console.error = function(...params){window.parent.window.terminal('error', params)}
-  console.debug = function(...params){window.parent.window.terminal('debug', params)}
-  console.assert = function(assertion, ...params){if (!assertion) {window.parent.window.terminal('error', ['Assertion failed'])}}
-  console.clear = function(){window.parent.window.terminal('clear', ['The cleansing'])}
-  window.onerror = function(errorMsg, url, lineNumber) {window.parent.window.terminal('error', [errorMsg+'; Line '+lineNumber]);return false;}
+  console.log = function(...params){window.top.terminal('log', params)}
+  console.info = function(...params){window.top.terminal('info', params)}
+  console.warn = function(...params){window.top.terminal('warn', params)}
+  console.error = function(...params){window.top.terminal('error', params)}
+  console.debug = function(...params){window.top.terminal('debug', params)}
+  console.assert = function(assertion, ...params){if (!assertion) {window.top.terminal('error', ['Assertion failed'])}}
+  console.clear = function(){window.top.terminal('clear', ['The cleansing'])}
+  window.onerror = function(errorMsg, url, lineNumber) {window.top.terminal('error', [errorMsg+'; Line '+lineNumber]);return false;}
 </script>`);
+    if (document.getElementById('console-clear').checked) document.getElementById('readout').innerHTML = '# Console';
   }
 
   function handleInfinite(code) {
-    if (document.getElementById('freeze').checked) {
-      return code.replaceAll(/((for|while) *?\([^¬]*?\)[^¬]*?{)/g, 'if(!window.__c)window.__c=0;$1window.__c++;if(window.__c>1000){throw new Error("Infinite loop")};');
-    } else {
-      return code;
-    }
+    if (document.getElementById('freeze').checked) return code.replaceAll(/((for|while) *?\([^¬]*?\)[^¬]*?{)/g, 'if(!window.__c)window.__c=0;$1window.__c++;if(window.__c>1000){throw new Error("Infinite loop")};');
+    return code;
   }
   // Insert user html
   iframe.contentWindow.__c = 0;
@@ -55,18 +53,16 @@ function up() {
   iframe.contentDocument.write('<script>'+handleInfinite(data[2].getValue())+'</script>');
 }
 
-window.addEventListener("load", function(){
+window.addEventListener('load', ()=>{
   if (localStorage.getItem('autosave')) {
     let editors = window.monaco.editor.getEditors();
     let values = localStorage.getItem('autosave').split('|SEPARATOR||FSH|');
     editors[0].getModel().setValue(values[0]);
     editors[1].getModel().setValue(values[1]);
     editors[2].getModel().setValue(values[2]);
-    up();
-  } else {
-    up();
   }
-})
+  up();
+});
 
 /* Show on terminal */
 const prefix = {
@@ -84,8 +80,8 @@ const cssType = {
   debug: 'cd'
 }
 function terminal(type, params) {
-  if (type == 'clear') {
-    document.getElementById('readout').innerHTML = '# Console'
+  if (type === 'clear') {
+    document.getElementById('readout').innerHTML = '# Console';
     return;
   }
   let text = [prefix[type]];
@@ -95,23 +91,21 @@ function terminal(type, params) {
       try {
         changed = JSON.stringify(param);
       } catch (err) {
-        // ignore
+        // Ignore :3
       }
       text.push(param+': '+changed);
     } else {
       text.push((param??'undefined').toString().replaceAll('\n', '<br>'));
     }
-  })
-  text = text.join(' ')
+  });
+  text = text.join(' ');
   document.getElementById('readout').innerHTML += `<pre class="${cssType[type]}">${text}</pre>`;
 }
 window.terminal = terminal;
 
 /* Make editors set their size corretly */
 function layout() {
-  window.monaco.editor.getEditors().forEach(t => {
-    t.layout({});
-  })
+  window.monaco.editor.getEditors().forEach(t=>t.layout({}));
 }
 
 /* Presets */

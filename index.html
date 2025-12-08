@@ -50,19 +50,22 @@
         <br>
         <p>Spaces:</p>
         <span style="display:flex">
-          <input checked type="checkbox" id="optspacehtml" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');document.getElementById('h-html').style.display = (this.checked ? '' : 'none');layout()">
           <label for="optspacehtml">HTML</label>
-          <input checked type="checkbox" id="optspacecss" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
+          <input checked type="checkbox" id="optspacehtml" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');document.getElementById('h-html').style.display = (this.checked ? '' : 'none');layout()">
           <label for="optspacecss">CSS</label>
-          <input checked type="checkbox" id="optspacejs" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
+          <input checked type="checkbox" id="optspacecss" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
           <label for="optspacejs">JS</label>
+          <input checked type="checkbox" id="optspacejs" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
         </span>
         <p>Features:</p>
         <span style="display:flex">
-          <input checked type="checkbox" id="console-enabled" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none');document.querySelector('.gutter.gutter-vertical').style.display = (this.checked ? '' : 'none')">
           <label for="console-enabled">Console</label>
-          <input checked type="checkbox" id="freeze">
+          <input checked type="checkbox" id="console-enabled" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none');document.querySelector('.gutter.gutter-vertical').style.display = (this.checked ? '' : 'none')">
+          <label for="console-clear">Clear console on refresh</label>
+          <input checked type="checkbox" id="console-clear">
+          <br>
           <label for="freeze">Prevent freeze</label>
+          <input checked type="checkbox" id="freeze">
         </span>
       </dialog>
       <dialog id="presets">
