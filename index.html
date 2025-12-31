@@ -83,7 +83,7 @@
       <div id="h-js"><img src="/media/js.svg" class="icon"><p class="icon-text">JS</p></div>
       <div id="js"></div>
       <script>
-        require.config({ paths: { vs: 'https://unpkg.com/monaco-editor/min/vs' } });
+        require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor/min/vs' } });
         require(['vs/editor/editor.main'], function () {
           monaco.editor.create(document.getElementById('html'), {
             value: `<!DOCTYPE html>\n<html lang="en">\n  <head>\n    \n  </head>\n  <body>\n    \n  </body>\n</html>`,
