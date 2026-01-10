@@ -11,9 +11,9 @@ function up() {
   let data = window.monaco.editor.getEditors();
 
   // Check if changed
-  let val = [data[0].getValue(), data[1].getValue(), data[2].getValue()]
+  let val = [data[0].getValue(), data[1].getValue(), data[2].getValue()];
   if (sval.join('|SEPARATOR|FSH|') == val.join('|SEPARATOR|FSH|')) return;
-  localStorage.setItem('autosave', val.join('|SEPARATOR||FSH|'))
+  localStorage.setItem('autosave', val.join('|SEPARATOR||FSH|'));
 
   // Soft refresh for css
   if (val[0]===sval[0]&&val[2]===sval[2] && val[1]!==sval[1]) {
@@ -111,19 +111,11 @@ function layout() {
 /* Presets */
 function setPreset(preset) {
   let editors = window.monaco.editor.getEditors();
-  switch (preset) {
-    case 'blank':
-      editors[0].getModel().setValue('');
-      editors[1].getModel().setValue('');
-      editors[2].getModel().setValue('');
-      break;
-    case 'default':
-      editors[0].getModel().setValue(`<!DOCTYPE html>\n<html lang="en">\n  <head>\n    \n  </head>\n  <body>\n    \n  </body>\n</html>`);
-      editors[1].getModel().setValue(`body {\n  background-color: black;\n  color: white;\n  font-family: Arial;\n}`);
-      editors[2].getModel().setValue('');
-      break;
-    default:
-      alert('An unknown preset was attempted to be loaded');
-      throw new Error('Unknown preset: '+preset);
+  if (!window.presets[preset]) {
+    alert('An unknown preset was loaded.');
+    throw new Error('Unknown preset: '+preset);
   }
+  editors[0].getModel().setValue(window.presets[preset].html);
+  editors[1].getModel().setValue(window.presets[preset].css);
+  editors[2].getModel().setValue(window.presets[preset].js);
 }
