@@ -27,7 +27,7 @@ dialog {
 }
 
 .gutter {
-  background-color: var(--bg-2);
+  background-color: var(--bg-1);
   background-repeat: no-repeat;
   background-position: 50%;
 }
@@ -118,6 +118,7 @@ iframe {
   overflow-y: auto;
   height: 25vh;
   padding-top: 5px;
+  background-color: var(--bg-0);
 }
 #readout {
   height: 100%;
