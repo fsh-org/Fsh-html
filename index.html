@@ -26,6 +26,7 @@
         <button class="close" onclick="this.parentElement.close()">x</button>
         <h2>Settings</h2>
         <b>Editor:</b>
+        <br>
         <label for="opttabsize">Tab size:</label>
         <select id="opttabsize" onchange="window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: Number(this.value) }))">
           <option>1</option>
@@ -35,7 +36,7 @@
           <option>8</option>
         </select>
         <label for="optwhitespace">Show whitespace:</label>
-        <select id="opttabsize" onchange="window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ renderWhitespace: this.value }))">
+        <select id="opttabsize" onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ renderWhitespace: this.value }))">
           <option value="none">None</option>
           <option value="selection">Selection</option>
           <option value="boundary" selected>Leading</option>
@@ -43,7 +44,7 @@
         </select>
         <br>
         <label for="opttheme">Theme:</label>
-        <select id="opttheme" onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ theme: this.value }))">
+        <select id="opttheme" onchange="window.monaco.editor.setTheme(this.value)">
           <option value="vs-dark">Dark</option>
           <option value="vs">Light</option>
           <option value="hc-black">Dark (HC)</option>
@@ -57,13 +58,16 @@
         </select>
         <br>
         <b>Spaces:</b>
+        <br>
         <label for="optspacehtml">HTML</label>
         <input checked type="checkbox" id="optspacehtml" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');document.getElementById('h-html').style.display = (this.checked ? '' : 'none');layout()">
         <label for="optspacecss">CSS</label>
         <input checked type="checkbox" id="optspacecss" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
         <label for="optspacejs">JS</label>
         <input checked type="checkbox" id="optspacejs" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
+        <br>
         <b>Features:</b>
+        <br>
         <label for="console-enabled">Console</label>
         <input checked type="checkbox" id="console-enabled" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none');document.querySelector('.gutter.gutter-vertical').style.display = (this.checked ? '' : 'none')">
         <label for="console-clear">Clear console on refresh</label>
@@ -91,7 +95,8 @@
       <div id="js"></div>
       <script>
         require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor/min/vs' } });
-        require(['vs/editor/editor.main'], function () {
+        require(['vs/editor/editor.main'], ()=>{
+          monaco.editor.setTheme('vs-dark');
           monaco.editor.create(document.getElementById('html'), {
             value: window.presets.default.html,
             language: 'html',
@@ -110,15 +115,15 @@
             readOnly: false,
             automaticLayout: true
           });
-          let editors = window.monaco.editor.getEditors();
-          editors.forEach(t=>t.getModel().updateOptions({
-            tabSize: 2,
-            renderWhitespace: 'boundary',
-            scrollBeyondLastLine: true,
-            minimap: { enabled: false },
-            theme: 'vs-dark'
-          }));
-          editors.forEach(t=>t.onDidChangeModelContent(up));
+          monaco.editor.getEditors().forEach(t=>{
+            t.onDidChangeModelContent(up);
+            t.updateOptions({
+              renderWhitespace: 'boundary',
+              scrollBeyondLastLine: true,
+              minimap: { enabled: false }
+            });
+            t.getModel().updateOptions({ tabSize: 2 });
+          });
         });
       </script>
     </div>
