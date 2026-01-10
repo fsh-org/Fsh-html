@@ -35,11 +35,13 @@
           <option>4</option>
           <option>8</option>
         </select>
+        <br>
         <label for="optwhitespace">Show whitespace:</label>
         <select id="opttabsize" onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ renderWhitespace: this.value }))">
           <option value="none">None</option>
           <option value="selection">Selection</option>
-          <option value="boundary" selected>Leading</option>
+          <option value="trailing" selected>Trailing</option>
+          <option value="boundary">Boundery</option>
           <option value="all">All</option>
         </select>
         <br>
@@ -118,7 +120,7 @@
           monaco.editor.getEditors().forEach(t=>{
             t.onDidChangeModelContent(up);
             t.updateOptions({
-              renderWhitespace: 'boundary',
+              renderWhitespace: 'trailing',
               scrollBeyondLastLine: true,
               minimap: { enabled: false }
             });
