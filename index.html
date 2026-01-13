@@ -15,7 +15,7 @@
     <!-- ------------------ -->
     <script src="https://account.fsh.plus/script.js"></script>
     <link rel="stylesheet" href="/media/style.css">
-    <script src="/media/presets.js"></script>
+    <script src="/media/data.js"></script>
     <script src="/media/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/split.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/loader.js"></script>
@@ -37,11 +37,11 @@
         </select>
         <br>
         <label for="optwhitespace">Show whitespace:</label>
-        <select id="opttabsize" onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ renderWhitespace: this.value }))">
+        <select id="optwhitespace" onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ renderWhitespace: this.value }))">
           <option value="none">None</option>
           <option value="selection">Selection</option>
           <option value="trailing" selected>Trailing</option>
-          <option value="boundary">Boundery</option>
+          <option value="boundary">Boundary</option>
           <option value="all">All</option>
         </select>
         <br>
@@ -59,16 +59,26 @@
           <option value="true">Yes</option>
         </select>
         <br>
-        <b>Spaces:</b>
+        <b>HTML:</b>
         <br>
-        <label for="optspacehtml">HTML</label>
+        <label for="optspacehtml">Show</label>
         <input checked type="checkbox" id="optspacehtml" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');document.getElementById('h-html').style.display = (this.checked ? '' : 'none');layout()">
-        <label for="optspacecss">CSS</label>
-        <input checked type="checkbox" id="optspacecss" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
-        <label for="optspacejs">JS</label>
-        <input checked type="checkbox" id="optspacejs" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
         <br>
-        <b>Features:</b>
+        <b>CSS:</b>
+        <label for="optspacecss">Show</label>
+        <input checked type="checkbox" id="optspacecss" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
+        <br>
+        <fieldset>
+          <legend>Base:</legend>
+          <label><input type="radio" name="optcssbase" onchange="up('force')" value="none" checked> None</label>
+          <label><input type="radio" name="optcssbase" onchange="up('force')" value="normalize"> Normalize</label>
+          <label><input type="radio" name="optcssbase" onchange="up('force')" value="reset"> Reset</label>
+        </fieldset>
+        <br>
+        <b>JS:</b>
+        <br>
+        <label for="optspacejs">Show</label>
+        <input checked type="checkbox" id="optspacejs" onchange="document.getElementById('js').style.display = (this.checked ? '' : 'none');document.getElementById('h-js').style.display = (this.checked ? '' : 'none');layout()">
         <br>
         <label for="console-enabled">Console</label>
         <input checked type="checkbox" id="console-enabled" onchange="document.getElementById('console').style.display = (this.checked ? '' : 'none');document.querySelector('.gutter.gutter-vertical').style.display = (this.checked ? '' : 'none')">

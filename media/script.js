@@ -7,16 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
 let sval = [];
 
 /* On change */
-function up() {
+function up(force='') {
   let data = window.monaco.editor.getEditors();
 
   // Check if changed
   let val = [data[0].getValue(), data[1].getValue(), data[2].getValue()];
-  if (sval.join('|SEPARATOR|FSH|') == val.join('|SEPARATOR|FSH|')) return;
+  if (force!=='force' && sval.join('|SEPARATOR|FSH|') === val.join('|SEPARATOR|FSH|')) return;
   localStorage.setItem('autosave', val.join('|SEPARATOR||FSH|'));
 
   // Soft refresh for css
-  if (val[0]===sval[0]&&val[2]===sval[2] && val[1]!==sval[1]) {
+  if (force!=='force' && val[0]===sval[0]&&val[2]===sval[2] && val[1]!==sval[1]) {
     sval = val;
     document.getElementById('render').contentDocument.getElementById('__FSH_CSS').innerHTML = val[1];
     return;
@@ -35,7 +35,7 @@ function up() {
   console.warn = function(...params){window.top.terminal('warn', params)}
   console.error = function(...params){window.top.terminal('error', params)}
   console.debug = function(...params){window.top.terminal('debug', params)}
-  console.assert = function(assertion, ...params){if (!assertion) {window.top.terminal('error', ['Assertion failed'])}}
+  console.assert = function(assertion, ...params){if(!assertion){window.top.terminal('error', ['Assertion failed'])}}
   console.clear = function(){window.top.terminal('clear', ['The cleansing'])}
   window.onerror = function(errorMsg, url, lineNumber) {window.top.terminal('error', [errorMsg+'; Line '+lineNumber]);return false;}
 </script>`);
@@ -48,7 +48,8 @@ function up() {
   }
   // Insert user html
   iframe.contentWindow.__c = 0;
-  iframe.contentDocument.write('<style id="__FSH_CSS">'+data[1].getValue()+'</style>');
+  iframe.contentDocument.write(`<style id="__FSH_BASE">${window.cssbases[document.querySelector('input[name="optcssbase"][checked]').value]}</style>
+<style id="__FSH_CSS">${data[1].getValue()}</style>`);
   iframe.contentDocument.write(handleInfinite(data[0].getValue()));
   iframe.contentDocument.write('<script>'+handleInfinite(data[2].getValue())+'</script>');
 }
