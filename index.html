@@ -28,7 +28,7 @@
         <b>Editor:</b>
         <br>
         <label for="opttabsize">Tab size:</label>
-        <select id="opttabsize" onchange="window.monaco.editor.getEditors().forEach(t=>t.getModel().updateOptions({ tabSize: Number(this.value) }))">
+        <select id="opttabsize" onchange="window.monaco.editor.getEditors().forEach(t=>t.updateOptions({ tabSize: Number(this.value) }))">
           <option>1</option>
           <option selected>2</option>
           <option>3</option>
@@ -65,6 +65,7 @@
         <input checked type="checkbox" id="optspacehtml" onchange="document.getElementById('html').style.display = (this.checked ? '' : 'none');document.getElementById('h-html').style.display = (this.checked ? '' : 'none');layout()">
         <br>
         <b>CSS:</b>
+        <br>
         <label for="optspacecss">Show</label>
         <input checked type="checkbox" id="optspacecss" onchange="document.getElementById('css').style.display = (this.checked ? '' : 'none');document.getElementById('h-css').style.display = (this.checked ? '' : 'none');layout()">
         <br>
@@ -130,11 +131,11 @@
           monaco.editor.getEditors().forEach(t=>{
             t.onDidChangeModelContent(up);
             t.updateOptions({
+              tabSize: 2,
               renderWhitespace: 'trailing',
               scrollBeyondLastLine: true,
               minimap: { enabled: false }
             });
-            t.getModel().updateOptions({ tabSize: 2 });
           });
         });
       </script>
