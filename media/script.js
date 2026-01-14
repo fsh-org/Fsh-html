@@ -48,7 +48,7 @@ function up(force='') {
   }
   // Insert user html
   iframe.contentWindow.__c = 0;
-  iframe.contentDocument.write(`<style id="__FSH_BASE">${window.cssbases[document.querySelector('input[name="optcssbase"][checked]').value]}</style>
+  iframe.contentDocument.write(`<style id="__FSH_BASE">${window.cssbases[document.querySelector('input[name="optcssbase"]:checked').value]}</style>
 <style id="__FSH_CSS">${data[1].getValue()}</style>`);
   iframe.contentDocument.write(handleInfinite(data[0].getValue()));
   iframe.contentDocument.write('<script>'+handleInfinite(data[2].getValue())+'</script>');
