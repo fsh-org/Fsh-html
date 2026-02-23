@@ -1,12 +1,33 @@
 // Set splits
-document.addEventListener('DOMContentLoaded', () => {
-  Split(['#editors', '#view']);
-  Split(['.render-div', '#console'], { direction: 'vertical', sizes: [75, 25] });
-});
+Split(['#editors', '#view']);
+Split(['.render-div', '#console'], { direction: 'vertical', sizes: [75, 25] });
 
-let sval = [];
+// Custom split
+let main = document.querySelector('main');
+let panes = document.querySelectorAll('main div:not(.gutter)');
+let paneSizes = [33.33, 33.33, 33.34];
+let FSplit = document.querySelector('main div.gutter');
+let SSplit = document.querySelectorAll('main div.gutter')[1];
+FSplit.onpointerdown = SSplit.onpointerdown = (evt)=>{ evt.target.setPointerCapture(evt.pointerId) };
+FSplit.onpointerup = FSplit.onpointercancel = SSplit.onpointerup = SSplit.onpointercancel = (evt)=>{ evt.target.releasePointerCapture(evt.pointerId) };
+FSplit.onpointermove = SSplit.onpointermove = (evt)=>{
+  if (!evt.target.hasPointerCapture(evt.pointerId)) return;
+  let idx = evt.target===FSplit?0:1;
+  let bounds = main.getBoundingClientRect();
+  let before = paneSizes[idx];
+  paneSizes[idx] = Math.min(Math.max((evt.clientY-bounds.top)/bounds.height*100,0),100)-(SSplit===evt.target?paneSizes[0]:0);
+  paneSizes[idx+1] = 100-paneSizes[0]-paneSizes[2-idx];
+  if (paneSizes[1]<0) {
+    paneSizes[2-idx*2] += paneSizes[1];
+    paneSizes[1] = 0;
+  }
+  panes[0].style.setProperty('--h', paneSizes[0].toFixed(2)+'%');
+  panes[1].style.setProperty('--h', paneSizes[1].toFixed(2)+'%');
+  panes[2].style.setProperty('--h', paneSizes[2].toFixed(2)+'%');
+};
 
 /* On change */
+let sval = [];
 function up(force='') {
   let data = window.monaco.editor.getEditors();
 
@@ -86,17 +107,37 @@ function terminal(type, params) {
     return;
   }
   let text = [prefix[type]];
-  params.forEach(param => {
-    if (typeof param === 'object') {
-      let changed = 'failed to decode';
-      try {
-        changed = JSON.stringify(param);
-      } catch (err) {
-        // Ignore :3
-      }
-      text.push(param+': '+changed);
-    } else {
-      text.push((param??'undefined').toString().replaceAll('\n', '<br>'));
+  params.forEach(param=>{
+    switch(typeof param) {
+      case 'object':
+        let changed = ': ';
+        try {
+          changed += JSON.stringify(param);
+        } catch(_) {
+          changed = '';
+        }
+        if (param===null) {
+          param = 'null';
+          changed = '';
+        }
+        text.push(param.toString()+changed);
+        break;
+      case 'undefined':
+        text.push('undefined');
+        break;
+      case 'bigint':
+        text.push(param.toString()+'n');
+        break;
+      case 'boolean':
+      case 'number':
+      case 'symbol':
+        text.push(param.toString());
+        break;
+      case 'function':
+      case 'string':
+      default:
+        text.push(param.toString().replaceAll('\n', '<br>'));
+        break;
     }
   });
   text = text.join(' ');

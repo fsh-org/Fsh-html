@@ -2,9 +2,7 @@
   min-width: 0;
 }
 body {
-  width: 100vw;
   width: 100dvw;
-  height: 100vh;
   height: 100dvh;
   overflow: hidden;
   display: flex;
@@ -27,6 +25,7 @@ dialog {
 }
 
 .gutter {
+  user-select: none;
   background-color: var(--bg-1);
   background-repeat: no-repeat;
   background-position: 50%;
@@ -41,27 +40,27 @@ dialog {
 }
 
 #editors {
-  display: flex;
-  overflow-y: auto;
   position: relative;
+  display: flex;
   flex-direction: column;
-}
-#html, #css, #js {
-  height: 100%;
+  height: 100dvh;
   overflow: hidden;
 }
-#h-html, #h-css, #h-js {
+nav {
   display: flex;
+}
+main {
+  flex: 1;
+  margin-bottom: 20px;
+}
+#html, #css, #js {
+  height: calc(var(--h, 33.33%) - 20px);
+}
+main .gutter {
+  display: flex;
+  gap: 5px;
   align-items: center;
   height: 20px;
-}
-.icon {
-  height: 20px;
-  margin: 0px 5px;
-  padding: 0px;
-}
-.icon-text {
-  display: inline-block;
 }
 
 .setting {
