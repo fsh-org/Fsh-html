@@ -51,7 +51,7 @@ nav {
 }
 main {
   flex: 1;
-  margin-bottom: 20px;
+  height: 100%;
 }
 #html, #css, #js {
   height: calc(var(--h, 33.33%) - 20px);

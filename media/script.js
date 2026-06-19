@@ -6,8 +6,8 @@ Split(['.render-div', '#console'], { direction: 'vertical', sizes: [75, 25] });
 let main = document.querySelector('main');
 let panes = document.querySelectorAll('main div:not(.gutter)');
 let paneSizes = [33.33, 33.33, 33.34];
-let FSplit = document.querySelector('main div.gutter');
-let SSplit = document.querySelectorAll('main div.gutter')[1];
+let FSplit = document.querySelector('main div.gutter-vertical');
+let SSplit = document.querySelectorAll('main div.gutter-vertical')[1];
 FSplit.onpointerdown = SSplit.onpointerdown = (evt)=>{ evt.target.setPointerCapture(evt.pointerId) };
 FSplit.onpointerup = FSplit.onpointercancel = SSplit.onpointerup = SSplit.onpointercancel = (evt)=>{ evt.target.releasePointerCapture(evt.pointerId) };
 FSplit.onpointermove = SSplit.onpointermove = (evt)=>{
@@ -15,7 +15,7 @@ FSplit.onpointermove = SSplit.onpointermove = (evt)=>{
   let idx = evt.target===FSplit?0:1;
   let bounds = main.getBoundingClientRect();
   let before = paneSizes[idx];
-  paneSizes[idx] = Math.min(Math.max((evt.clientY-bounds.top)/bounds.height*100,0),100)-(SSplit===evt.target?paneSizes[0]:0);
+  paneSizes[idx] = Math.min(Math.max((evt.clientY-bounds.top)/bounds.height*100,0),100)-(idx?paneSizes[0]:0);
   paneSizes[idx+1] = 100-paneSizes[0]-paneSizes[2-idx];
   if (paneSizes[1]<0) {
     paneSizes[2-idx*2] += paneSizes[1];
